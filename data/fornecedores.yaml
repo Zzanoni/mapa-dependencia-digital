@@ -1,0 +1,110 @@
+# Base curada de fornecedores.
+#
+# Cada fornecedor é identificado por sufixos de domínio, trechos de nome,
+# ASNs e/ou nomes de emissor de certificado. `pais_sede` é a jurisdição que
+# controla a empresa (ISO 3166-1 alfa-2), que pode ser diferente de onde a
+# infraestrutura está fisicamente.
+#
+# `categoria` (opcional) reclassifica hosts encontrados na página inicial:
+# scripts | cdn | analytics.
+#
+# Esta é a parte do projeto mais aberta a contribuições: ao adicionar um
+# fornecedor, cite a fonte do país-sede no campo `fonte`.
+
+fornecedores:
+  # --- Nuvem e hospedagem (sede estrangeira) ---
+  - nome: Amazon Web Services
+    pais_sede: US
+    asns: [16509, 14618]
+    sufixos: [amazonaws.com, cloudfront.net, awsstatic.com]
+    contem: [awsdns]
+    emissores: [Amazon]
+    categoria: cdn
+
+  - nome: Google
+    pais_sede: US
+    asns: [15169, 396982]
+    sufixos: [google.com, googleapis.com, gstatic.com, googleusercontent.com, googlemail.com, google.com.br, youtube.com, ytimg.com]
+    emissores: [Google Trust Services]
+    categoria: scripts
+
+  - nome: Google (analytics e publicidade)
+    pais_sede: US
+    sufixos: [google-analytics.com, googletagmanager.com, doubleclick.net, googlesyndication.com, googleadservices.com]
+    categoria: analytics
+
+  - nome: Microsoft
+    pais_sede: US
+    asns: [8075]
+    sufixos: [outlook.com, office365.com, microsoft.com, microsoftonline.com, azureedge.net, azurewebsites.net, cloudapp.net, msecnd.net, clarity.ms]
+    emissores: [Microsoft]
+    categoria: scripts
+
+  - nome: Cloudflare
+    pais_sede: US
+    asns: [13335]
+    sufixos: [cloudflare.com, cloudflare.net, cloudflareinsights.com]
+    categoria: cdn
+
+  - nome: Akamai
+    pais_sede: US
+    asns: [20940, 16625]
+    sufixos: [akamai.net, akamaiedge.net, akamaihd.net, edgekey.net, edgesuite.net]
+    categoria: cdn
+
+  - nome: Fastly
+    pais_sede: US
+    asns: [54113]
+    sufixos: [fastly.net, fastlylb.net]
+    categoria: cdn
+
+  - nome: Meta
+    pais_sede: US
+    asns: [32934]
+    sufixos: [facebook.net, facebook.com, fbcdn.net, instagram.com]
+    categoria: analytics
+
+  - nome: DigitalOcean
+    pais_sede: US
+    asns: [14061]
+    sufixos: [digitaloceanspaces.com]
+
+  - nome: Oracle Cloud
+    pais_sede: US
+    asns: [31898]
+    sufixos: [oraclecloud.com]
+
+  - nome: OVHcloud
+    pais_sede: FR
+    asns: [16276]
+
+  - nome: Hetzner
+    pais_sede: DE
+    asns: [24940]
+
+  # --- Autoridades certificadoras ---
+  - nome: Let's Encrypt (ISRG)
+    pais_sede: US
+    emissores: [Let's Encrypt]
+
+  - nome: DigiCert
+    pais_sede: US
+    emissores: [DigiCert]
+
+  - nome: Certisign
+    pais_sede: BR
+    emissores: [Certisign]
+
+  # --- Infraestrutura nacional ---
+  - nome: Serpro
+    pais_sede: BR
+    sufixos: [serpro.gov.br]
+
+  - nome: RNP
+    pais_sede: BR
+    asns: [1916]
+    sufixos: [rnp.br]
+
+  - nome: Locaweb
+    pais_sede: BR
+    sufixos: [locaweb.com.br]

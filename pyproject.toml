@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mapa-dependencia-digital"
+version = "0.1.0"
+description = "Mapeia, de forma passiva, de quais fornecedores e países dependem os serviços digitais do setor público brasileiro."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    "typer>=0.12",
+    "dnspython>=2.6",
+    "cryptography>=42",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+pagina = ["playwright>=1.44"]
+dev = ["pytest>=8", "ruff>=0.5"]
+
+[project.scripts]
+mapa-dependencia = "mapa_dependencia.cli:app"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+mapa_dependencia = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "B", "SIM", "ISC"]
+# B008: padrão do Typer (typer.Option em defaults)
+ignore = ["B008"]
